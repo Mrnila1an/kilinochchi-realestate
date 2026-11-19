@@ -6,19 +6,19 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { CloseIcon, MenuIcon, MessageIcon, PhoneIcon } from "./icons";
 
 type Lang="ta"|"en";
-const LangCtx=createContext<{lang:Lang;setLang:(l:Lang)=>void}>({lang:"ta",setLang:()=>{}});
+const LangCtx=createContext<{lang:Lang;setLang:(l:Lang)=>void}>({lang:"en",setLang:()=>{}});
 export const useLang=()=>useContext(LangCtx);
 export const copy=(lang:Lang, ta:string,en:string)=>lang==="ta"?ta:en;
 
 const nav=[
   ["/","முகப்பு","Home"],["/properties","சொத்துகள்","Properties"],["/about","எங்களைப் பற்றி","About"],
-  ["/sell","சொத்தை விற்க","Sell"],["/contact","தொடர்பு","Contact"],["/login","நிர்வாக உள்நுழைவு","Admin Login"]
+  ["/sell","சொத்தை விற்க","Sell"],["/contact","தொடர்பு","Contact"],["/login","உள்நுழைவு","Login"]
 ];
 
 export function SiteShell({children}:{children:React.ReactNode}){
-  const [lang,setLangState]=useState<Lang>("ta"); const [menu,setMenu]=useState(false); const path=usePathname();
-  useEffect(()=>{const saved=localStorage.getItem("kre-lang") as Lang|null;if(saved)setLangState(saved)},[]);
-  const setLang=(l:Lang)=>{setLangState(l);localStorage.setItem("kre-lang",l)};
+  const [lang,setLangState]=useState<Lang>("en"); const [menu,setMenu]=useState(false); const path=usePathname();
+  useEffect(()=>{const saved=localStorage.getItem("kre-lang-v2") as Lang|null;if(saved)setLangState(saved)},[]);
+  const setLang=(l:Lang)=>{setLangState(l);localStorage.setItem("kre-lang-v2",l)};
   return <LangCtx.Provider value={{lang,setLang}}>
     <div className="bg-[#073f32] text-white text-sm">
       <div className="container-site flex min-h-10 items-center justify-between gap-3 py-2">

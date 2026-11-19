@@ -32,11 +32,9 @@ alter table public.properties add constraint properties_district_check
   check (district in ('Kilinochchi','Vavuniya','Jaffna','Mullaitivu','Trincomalee','Mannar'));
 
 create policy "Public can read published properties" on public.properties for select using (published = true);
-create policy "Admins can read all properties" on public.properties for select to authenticated using (exists (select 1 from public.admin_users where user_id = auth.uid()));
-create policy "Admins can insert properties" on public.properties for insert to authenticated with check (exists (select 1 from public.admin_users where user_id = auth.uid()));
-create policy "Admins can update properties" on public.properties for update to authenticated using (exists (select 1 from public.admin_users where user_id = auth.uid())) with check (exists (select 1 from public.admin_users where user_id = auth.uid()));
-create policy "Admins can delete properties" on public.properties for delete to authenticated using (exists (select 1 from public.admin_users where user_id = auth.uid()));
+create policy "Admins can read all properties" on public.properties for select to authenticated using (lower(coalesce(auth.jwt()->>'email', '')) = 'thilakannila7@gmail.com');
+create policy "Admins can insert properties" on public.properties for insert to authenticated with check (lower(coalesce(auth.jwt()->>'email', '')) = 'thilakannila7@gmail.com');
+create policy "Admins can update properties" on public.properties for update to authenticated using (lower(coalesce(auth.jwt()->>'email', '')) = 'thilakannila7@gmail.com') with check (lower(coalesce(auth.jwt()->>'email', '')) = 'thilakannila7@gmail.com');
+create policy "Admins can delete properties" on public.properties for delete to authenticated using (lower(coalesce(auth.jwt()->>'email', '')) = 'thilakannila7@gmail.com');
 
--- After creating the intended administrator in Supabase Authentication,
--- add that exact user's UUID manually. Never expose the service-role key to this website.
--- insert into public.admin_users (user_id) values ('YOUR-AUTH-USER-UUID');
+-- Admin access is restricted to the verified Supabase account above.

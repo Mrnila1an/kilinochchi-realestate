@@ -7,4 +7,4 @@ export const metadata:Metadata={
   description:"Property buying and selling support across Kilinochchi, Vavuniya, Jaffna, Mullaitivu, Trincomalee and Mannar.",
   metadataBase:new URL("https://kilinochchirealestate.lk"),
 };
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="ta"><body><SiteShell>{children}</SiteShell></body></html>}
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><SiteShell>{children}</SiteShell></body></html>}
