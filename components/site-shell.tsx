@@ -23,7 +23,7 @@ export function SiteShell({children}:{children:React.ReactNode}){
     <div className="bg-[#073f32] text-white text-sm">
       <div className="container-site flex min-h-10 items-center justify-between gap-3 py-2">
         <a className="focus-ring flex items-center gap-2 font-semibold" href="tel:+94764851677"><PhoneIcon className="h-4 w-4 text-[#e3b958]"/>076 485 1677</a>
-        <span className="hidden sm:block text-white/70">Kilinochchi · Vavuniya · Jaffna</span>
+        <span className="hidden sm:block text-white/70">{copy(lang,"6 மாவட்டங்களில் சேவை","Serving 6 districts")}</span>
         <div className="flex rounded-full border border-white/20 p-0.5" aria-label="Language">
           <button onClick={()=>setLang("ta")} className={`focus-ring rounded-full px-3 py-1 ${lang==="ta"?"bg-[#d8aa45] text-[#052e27]":""}`}>தமிழ்</button>
           <button onClick={()=>setLang("en")} className={`focus-ring rounded-full px-3 py-1 ${lang==="en"?"bg-[#d8aa45] text-[#052e27]":""}`}>EN</button>

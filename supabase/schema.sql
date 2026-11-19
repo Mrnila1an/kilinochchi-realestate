@@ -10,7 +10,7 @@ create table if not exists public.properties (
   title_en text not null,
   description_ta text,
   description_en text,
-  district text not null check (district in ('Kilinochchi','Vavuniya','Jaffna')),
+  district text not null check (district in ('Kilinochchi','Vavuniya','Jaffna','Mullaitivu','Trincomalee','Mannar')),
   property_type text not null check (property_type in ('land','house','commercial')),
   price_lkr numeric check (price_lkr is null or price_lkr >= 0),
   land_size text,
@@ -25,6 +25,11 @@ create table if not exists public.properties (
 
 alter table public.admin_users enable row level security;
 alter table public.properties enable row level security;
+
+-- Expands the district options safely when upgrading an existing database.
+alter table public.properties drop constraint if exists properties_district_check;
+alter table public.properties add constraint properties_district_check
+  check (district in ('Kilinochchi','Vavuniya','Jaffna','Mullaitivu','Trincomalee','Mannar'));
 
 create policy "Public can read published properties" on public.properties for select using (published = true);
 create policy "Admins can read all properties" on public.properties for select to authenticated using (exists (select 1 from public.admin_users where user_id = auth.uid()));
