@@ -1,0 +1,4 @@
+"use client";
+import { PropertyBrowser } from "@/components/property-browser";
+import { copy,useLang } from "@/components/site-shell";
+export default function Properties(){const {lang}=useLang();return <><section className="bg-[#073f32] py-20 text-white"><div className="container-site"><p className="text-sm font-bold uppercase tracking-[.2em] text-[#e3b958]">{copy(lang,"தேடுங்கள்","Discover")}</p><h1 className="mt-4 font-serif text-5xl font-bold md:text-7xl">{copy(lang,"சொத்துகள்","Properties")}</h1><p className="mt-5 max-w-xl text-white/65">{copy(lang,"உண்மையான, நிர்வாகியால் வெளியிடப்பட்ட சொத்து விளம்பரங்களை மாவட்டம் மற்றும் வகை மூலம் தேடுங்கள்.","Browse genuine, admin-published listings by district and property type.")}</p></div></section><section className="container-site py-16"><PropertyBrowser/></section></>}

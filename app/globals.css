@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --forest:#073f32; --deep:#052e27; --gold:#d8aa45; --cream:#f7f4ec; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:#fbfaf6; color:#16342d; font-family: Arial, "Noto Sans Tamil", sans-serif; }
+button, input, select, textarea { font: inherit; }
+.container-site { width:min(1180px, calc(100% - 2rem)); margin-inline:auto; }
+.eyebrow { color:#a57919; font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.section-title { color:var(--deep); font-family:Georgia, serif; font-size:clamp(2rem,5vw,3.6rem); line-height:1.05; letter-spacing:-.03em; }
+.gold-line { width:48px; height:3px; background:var(--gold); border-radius:999px; }
+.soft-shadow { box-shadow:0 18px 60px rgba(4,48,39,.12); }
+.hero-grid { background-image:linear-gradient(rgba(216,170,69,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(216,170,69,.09) 1px,transparent 1px);background-size:42px 42px; }
+.focus-ring:focus-visible { outline:3px solid #e3b958; outline-offset:3px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior:auto!important; transition:none!important; } }
