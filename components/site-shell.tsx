@@ -12,7 +12,7 @@ export const copy=(lang:Lang, ta:string,en:string)=>lang==="ta"?ta:en;
 
 const nav=[
   ["/","முகப்பு","Home"],["/properties","சொத்துகள்","Properties"],["/about","எங்களைப் பற்றி","About"],
-  ["/sell","சொத்தை விற்க","Sell"],["/contact","தொடர்பு","Contact"]
+  ["/sell","சொத்தை விற்க","Sell"],["/contact","தொடர்பு","Contact"],["/login","நிர்வாக உள்நுழைவு","Admin Login"]
 ];
 
 export function SiteShell({children}:{children:React.ReactNode}){
@@ -48,7 +48,7 @@ export function SiteShell({children}:{children:React.ReactNode}){
     <footer className="bg-[#052e27] text-white">
       <div className="container-site grid gap-10 py-14 md:grid-cols-[1.2fr_.8fr_.8fr]">
         <div><div className="flex items-center gap-4"><Image src="/logo.jpeg" width={72} height={72} alt="Kilinochchi RealEstate" className="rounded-full"/><div className="font-serif text-xl font-bold">Kilinochchi<br/>RealEstate</div></div><p className="mt-5 max-w-md text-white/65">{copy(lang,"உங்கள் சொத்து வாங்கல் மற்றும் விற்பனைக்கான நம்பிக்கையான பங்காளர்!","Your trusted partner for buying and selling property.")}</p></div>
-        <div><h2 className="font-bold text-[#e3b958]">{copy(lang,"விரைவு இணைப்புகள்","Quick links")}</h2><div className="mt-4 grid gap-3">{nav.slice(0,5).map(([h,ta,en])=><Link key={h} href={h} className="text-white/70 hover:text-white">{copy(lang,ta,en)}</Link>)}</div></div>
+        <div><h2 className="font-bold text-[#e3b958]">{copy(lang,"விரைவு இணைப்புகள்","Quick links")}</h2><div className="mt-4 grid gap-3">{nav.map(([h,ta,en])=><Link key={h} href={h} className="text-white/70 hover:text-white">{copy(lang,ta,en)}</Link>)}</div></div>
         <div><h2 className="font-bold text-[#e3b958]">{copy(lang,"தொடர்பு கொள்ளுங்கள்","Get in touch")}</h2><a className="mt-4 flex items-center gap-2 text-white/75" href="tel:+94764851677"><PhoneIcon className="h-5 w-5"/>+94 76 485 1677</a><a className="mt-3 flex items-center gap-2 text-white/75" href="https://wa.me/94717111677"><MessageIcon className="h-5 w-5"/>+94 71 711 1677</a></div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-sm text-white/45">© {new Date().getFullYear()} Kilinochchi RealEstate · KilinochchiRealEstate.lk {copy(lang,"(கோரப்பட்ட டொமைன்)","(requested domain)")}</div>
